@@ -242,6 +242,30 @@ bool Cmon::checkDevice()
 
         res = true;
     }
+	else if (outArgs.at(0).toString() == "geminipda") /* Planet computers Gemini PDA */
+    {
+        generalValues.clear();
+        generalValues << "";
+        generalValues << "/sys/devices/platform/battery/power_supply/battery/ChargerVoltage";
+        generalValues << "/sys/devices/platform/battery_meter/FG_Current";
+        generalValues << "/sys/devices/platform/battery/power_supply/battery/batt_vol";
+        generalValues << "/sys/devices/platform/battery/power_supply/battery/capacity";
+        generalValues << "/sys/devices/platform/battery/power_supply/battery/batt_temp";
+
+        infoPageValues.clear();
+        infoPageValues << "/sys/devices/platform/battery/power_supply/battery/battery/status";
+        infoPageValues << "/sys/devices/platform/battery/power_supply/battery/battery/charge_type";
+        infoPageValues << "/sys/devices/platform/battery/power_supply/battery/battery/health";
+        infoPageValues << "/sys/devices/platform/battery/power_supply/battery/battery/technology";
+        infoPageValues << ""; /* Not available */
+        infoPageValues << ""; /* Not available */
+
+        infoPageRawValues.clear();
+		/* Not available */
+
+        res = true;
+    }
+
 
     glob(&generalValues);
     glob(&infoPageValues);
